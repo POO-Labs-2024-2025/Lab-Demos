@@ -39,5 +39,35 @@ class Dacia extends Car {
     public String addGasoline() {
         return "gas";
     }
+
+    public void startEngineWithScrewdriver() {
+        // do something
+    }
+
+    public static void main(String[] args) {
+        // the right member is the instance (Dacia, available at runtime), the left member is the
+        // reference (Car, available at compile time)
+        Car car = new Dacia();
+
+        // This will call the method from the instance (from the Dacia class). This happens only at runtime since it has to
+        // check the specific instance which is available only at runtime (when the memory is allocated).
+        car.addGasoline();
+
+        // Going forward with the reference and instance examples, this code below will not compile since the reference
+        // is of type 'Car' and Car does not have this method. The instance has this method, but how can the compiler know
+        // that you won't change the instance to another class that does not have this method? Thus, an error is thrown.
+        car.startEngineWithScrewdriver();
+
+        // But this work since the reference is now of type 'Dacia'
+        Dacia carDacia = new Dacia();
+        carDacia.startEngineWithScrewdriver();
+
+        // It's important to note that overloading looks at the reference, so it's a compile time mechanism, therefore
+        // the example above applies below, since the overloaded method is not available to the reference.
+        car.addGasoline(1);
+
+        // But this works.
+        carDacia.addGasoline(1);
+    }
 }
 
