@@ -28,4 +28,10 @@ public class Editor {
             command.undo();
         }
     }
+
+    redo() {
+        // take the last command
+        // call execute on it
+        // put it back in history
+    }
 }
