@@ -1,5 +1,5 @@
 package visitor_second_iteration;
 
 public interface Node {
-    void show();
+    public abstract void accept(Visitor v);
 }
